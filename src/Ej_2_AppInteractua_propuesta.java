@@ -1,7 +1,5 @@
 import javax.swing.*;
 
-;
-
 public class Ej_2_AppInteractua_propuesta extends JFrame {
     public static void main(String[] args){
         Ej_2_AppInteractua_propuesta applet = new Ej_2_AppInteractua_propuesta();
@@ -25,13 +23,22 @@ public class Ej_2_AppInteractua_propuesta extends JFrame {
         this.setVisible(true);
     }
     public void go() {
-        while (true) {
-            try {
-                Thread.currentThread().sleep(100);
-            } catch (InterruptedException ex) {}
-            if (runflag) {
-                t.setText(Integer.toString(count++));
+
+        Thread hilo = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        Thread.currentThread().sleep(100);
+                    } catch (InterruptedException ex) {}
+                    if (runflag) {
+                        t.setText(Integer.toString(count++));
+                    }
+                }
             }
-        }
+        });
+
+        hilo.start();
+
     }
 }
