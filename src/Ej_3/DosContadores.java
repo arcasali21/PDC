@@ -10,6 +10,8 @@ class DosContadores extends Thread {
     private JLabel label = new JLabel("contador 1 == contador 2");
     private int contador1 = 0;
     private int contador2 = 0;
+    private boolean bloqueado = false;
+
     public DosContadores(Container container) {
         JPanel panel = new JPanel();
         panel.add(textContador1);
@@ -27,18 +29,23 @@ class DosContadores extends Thread {
     @Override
     public void run() {
         while (true) {
-            textContador1.setText(Integer.toString(contador1++));
-            textContador2.setText(Integer.toString(contador2++));
             try {
+                bloqueado = true;
+                textContador1.setText(Integer.toString(contador1++));
+                sleep(300);
+                textContador2.setText(Integer.toString(contador2++));
+                bloqueado = false;
                 sleep(500);
             } catch (InterruptedException e) {}
         }
     }
     public void testSincro() {
-        if (contador1 != contador2) {
-            label.setText("No Sincronizados");
-        }else{
-            label.setText("Sincronizados");
+        if (!bloqueado) {
+            if (contador1 != contador2) {
+                label.setText("No Sincronizados");
+            } else {
+                label.setText("Sincronizados");
+            }
         }
     }
 }

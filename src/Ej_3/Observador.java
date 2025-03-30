@@ -11,7 +11,6 @@ public class Observador extends Thread {
     @Override
     public void run() {
         while (true) {
-
             try {
                 sleep(5);
             } catch (InterruptedException e) {
