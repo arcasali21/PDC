@@ -32,7 +32,7 @@ class DosContadores extends Thread {
             try {
                 bloqueado = true;
                 textContador1.setText(Integer.toString(contador1++));
-                sleep(300);
+                //sleep(300);
                 textContador2.setText(Integer.toString(contador2++));
                 bloqueado = false;
                 sleep(500);

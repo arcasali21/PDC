@@ -12,7 +12,7 @@ public class Observador extends Thread {
     public void run() {
         while (true) {
             try {
-                sleep(5);
+                sleep(1);
             } catch (InterruptedException e) {
                 System.err.println("El hilo fue interrumpido: " + e.getMessage());
             }
