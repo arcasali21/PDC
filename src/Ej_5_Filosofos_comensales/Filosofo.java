@@ -20,7 +20,7 @@ public class Filosofo extends Thread {
 
     public void run() {
         while(true) {
-            System.out.println(this.nombre + " - Intenta comer ");
+            //System.out.println(this.nombre + " - Intenta comer ");
             if(intentar_comer()){
                 System.out.println(this.nombre + " - COMIENDO ");
                 try {
@@ -30,18 +30,18 @@ public class Filosofo extends Thread {
                 }
                 tenedor_derecha.liberar();
                 tenedor_izquierda.liberar();
-                System.out.println(this.nombre + " - termino de comer ");
-                this.pensando();
+                //System.out.println(this.nombre + " - termino de comer ");
+                this.pensando(" - termino de comer ");
             }else {
-                System.out.println(this.nombre + " - No tiene tenedores");
-                this.pensando();
+                //System.out.println(this.nombre + " - No tiene tenedores");
+                this.pensando(" - No tiene tenedores");
             }
 
         }
     }
 
-    private void pensando() {
-        System.out.println(this.nombre + "- PENSANDO ");
+    private void pensando(String razon) {
+        System.out.println(this.nombre + " - PENSANDO" + razon);
         try {
             sleep(tiempo_pensamiento);
         } catch (InterruptedException e) {
