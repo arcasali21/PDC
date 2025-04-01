@@ -43,7 +43,7 @@ public class Filosofo extends Thread {
     private void pensando(String razon) {
         System.out.println(this.nombre + " - PENSANDO" + razon);
         try {
-            sleep(tiempo_pensamiento);
+            wait(tiempo_pensamiento);
         } catch (InterruptedException e) {
             System.err.println("El hilo fue interrumpido: " + e.getMessage());
         }

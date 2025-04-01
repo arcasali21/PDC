@@ -31,21 +31,26 @@ class DosContadores extends Thread {
         while (true) {
             try {
                 bloqueado = true;
-                textContador1.setText(Integer.toString(contador1++));
-                //sleep(300);
-                textContador2.setText(Integer.toString(contador2++));
+
+                incrementar();
                 bloqueado = false;
                 sleep(500);
             } catch (InterruptedException e) {}
         }
     }
-    public void testSincro() {
-        if (!bloqueado) {
+
+    // todos los procesos que tengan syncronized se ejecutan uno a la vez
+    public synchronized void incrementar() {
+        textContador1.setText(Integer.toString(contador1++));
+        textContador2.setText(Integer.toString(contador2++));
+    }
+
+    // todos los procesos que tengan syncronized se ejecutan uno a la vez
+    public synchronized void testSincro() {
+        //if (!bloqueado) {
             if (contador1 != contador2) {
                 label.setText("No Sincronizados");
-            } else {
-                label.setText("Sincronizados");
-            }
+          //  }
         }
     }
 }
