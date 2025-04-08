@@ -1,16 +1,19 @@
 import javax.swing.*;
 
 public class Ej_2_AppInteractua_propuesta extends JFrame {
+
     public static void main(String[] args){
         Ej_2_AppInteractua_propuesta applet = new Ej_2_AppInteractua_propuesta();
         applet.init();
     }
+
     private JPanel panel = new JPanel();
     private JButton start = new JButton("Empezar");
     private JButton onoff = new JButton("On/Off");
     private JTextField t = new JTextField(10);
     private boolean runflag = true;
     private int count = 0;
+
     public void init() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         start.addActionListener((e)-> go());
@@ -22,6 +25,7 @@ public class Ej_2_AppInteractua_propuesta extends JFrame {
         this.pack();
         this.setVisible(true);
     }
+
     public void go() {
 
         Thread hilo = new Thread(new Runnable() {

@@ -21,7 +21,7 @@ public class Ej_1_HoraIntermitente_V1 extends Thread {
 
     public static void main(String[] args) {
         // Crear un hilo y ejecutarlo  
-        Thread hiloHora = new Thread(new Ej_1_HoraIntermitente_V1());
+        Ej_1_HoraIntermitente_V1 hiloHora = new Ej_1_HoraIntermitente_V1();
         hiloHora.start();
     }
 }  
