@@ -1,21 +1,21 @@
 package EJ_6;
 
-import java.util.Random;
 
-public class Vehiculo implements Runnable {
+public abstract class Vehiculo implements Runnable {
 
     private Cochera cochera;
     int numero;
 
-    public Vehiculo(Cochera cochera) {
+    public Vehiculo(Cochera cochera, int numero) {
         this.cochera = cochera;
+        this.numero = numero;
     }
 
     @Override
     public void run() {
-        while (true) {
+        //while (true) {
             try {
-                Thread.sleep((new Random()).nextInt(4)+1); // espera alaeatoria entre 1 y 5 segs
+                Thread.sleep((long) (Math.random()*4000 + 1000)); // espera alaeatoria entre 1 y 5 segs
             } catch (InterruptedException e) {
                 System.err.println("El hilo fue interrumpido: " + e.getMessage());
             }
@@ -23,16 +23,17 @@ public class Vehiculo implements Runnable {
             cochera.estacionar(this);
 
             try {
-                Thread.sleep((new Random()).nextInt(4)+1); // espera alaeatoria entre 1 y 5 segs
+                Thread.sleep((long) (Math.random()*4000 + 1000)); // espera alaeatoria entre 1 y 5 segs
             } catch (InterruptedException e) {
                 System.err.println("El hilo fue interrumpido: " + e.getMessage());
             }
 
             cochera.retirar(this);
-        }
+        //}
     }
 
-    public int getTamaño() {
-        return this.numero;
-    }
+    public abstract String darIdVehiculo();
+
+    public abstract int getTamaño();
+
 }

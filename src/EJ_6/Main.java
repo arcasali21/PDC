@@ -1,29 +1,23 @@
 package EJ_6;
 
-import Ej_5_Filosofos_comensales.Filosofo;
-import Ej_5_Filosofos_comensales.Tenedor;
-
-import java.util.Random;
-
 public class Main {
 
-
+    private static int CAPACIDAD_COCHERA = 5;
+    private static int CANTIDAD_VEHICULOS = CAPACIDAD_COCHERA*2;
 
     public static void main(String[] args) {
 
+        Cochera cochera = new Cochera(CAPACIDAD_COCHERA);
 
-        /*Filosofo[] filosofos = new Filosofo[NUM_FILOSOFOS];
+        Vehiculo[] vehiculos = new Vehiculo[CANTIDAD_VEHICULOS];
 
-        for(int i = 0; i < 3; i++)
-            tenedores[i] = new Tenedor("Tenedor " + i);
+        for(int i = 0; i < CANTIDAD_VEHICULOS; i++) {
+            if (Math.random() < 0.5)
+                vehiculos[i] = new Auto(cochera, i);
+            else
+                vehiculos[i] = new Camion(cochera, i);
 
-        for(int i = 0; i < NUM_FILOSOFOS; i++)
-            filosofos[i] = new Filosofo("Filosofo " + i, (new Random()).nextInt(TIEMPO_PESAMIENTO_MAX)+1,(new Random()).nextInt(TIEMPO_COMIENDO_MAX)+1, tenedores[i], tenedores[(i+1)%NUM_FILOSOFOS]);
-
-        for(int i = 0; i < NUM_FILOSOFOS; i++)
-            filosofos[i].start();*/
-
-
-
+            (new Thread(vehiculos[i])).start();
+        }
     }
 }
